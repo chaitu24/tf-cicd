@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "forgithubaction" {
-  bucket = "for_github_action"
+  bucket = "forgithubaction2122"
   tags = {
     Environment = "Prod"
   }
