@@ -67,6 +67,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - uses: terraform-linters/setup-tflint@v3
+      name: Setup TFLint
+      with:
+        tflint_version: latest
+
+    - name: Show version
+      run: tflint --version
+    
+    - name: Init TFLint
+      run: tflint --init
+
      # Install the latest version of Terraform CLI and configure the Terraform CLI configuration.
     - name: Install Terraform
       run: |
@@ -83,6 +94,9 @@ jobs:
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt
+    
+    - name: Terraform lint
+      run: tflint -f .tflint.hcl
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
