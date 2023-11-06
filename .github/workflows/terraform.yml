@@ -77,6 +77,8 @@ jobs:
     
     - name: Init TFLint
       run: tflint --init
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
 
      # Install the latest version of Terraform CLI and configure the Terraform CLI configuration.
     - name: Install Terraform
